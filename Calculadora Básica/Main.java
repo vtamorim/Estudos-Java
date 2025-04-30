@@ -46,6 +46,7 @@ public class Main{
         String sair = input.nextLine();
         if(sair.equalsIgnoreCase("S")){
             running = false;
+        input.close();
 }
     }
     
