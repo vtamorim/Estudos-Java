@@ -1,13 +1,15 @@
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Main
 {
+    static Map <String, String> dicionary =  new HashMap<>();
+	static Scanner input = new Scanner(System.in);
+	static Set<String> keys = dicionary.keySet();
+	
     static void ad_evento(){
-        Map <String, String> dicionary =  new HashMap<>();
-		Scanner input = new Scanner(System.in);
-		
         System.out.println("Nome do Evento:");
         String name_event = input.nextLine();
         
@@ -19,26 +21,29 @@ public class Main
         
         System.out.println(name_event + "; Dia:" +dicionary.get(name_event));
     }
-    
-    
-    
+
+    static void ed_evento(){
+        System.out.println("Qual Evento você queria Mudar?");
+        System.out.println(dicionary.keySet());
+    }
+
 	public static void main(String[] args) {
-		Map <String, String> dicionary =  new HashMap<>();
-		
-		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Opa, aqui é uma Agenda \nO que desejas?");
+		boolean condition = true;
+		while(condition){
 		String[] lista_do = {"Adicionar Evento","Editar Evento","Próximo Evento","Compromissos do Dia"};
 		for (int i=0;i < lista_do.length ; i++ ) {
 		    System.out.println("[" + i + "]" + lista_do[i]);
 		}
 		
 	    int escolha = input.nextInt();
+	    input.nextLine();
 	    switch(escolha){
 	       case 0:
 	           ad_evento();
 	       case 1:
-	           break;
+	           ed_evento();
 	       case 2:
 	           break;
 	       case 3:
@@ -56,6 +61,7 @@ public class Main
 		
 		//Por enquanto, esse arquivo apenas servirá como teste para um projeto breve
 		*/
+		}
 		input.close();
 	}
 }
