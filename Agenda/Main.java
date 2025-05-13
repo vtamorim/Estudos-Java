@@ -2,31 +2,54 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.*;
+import java.time.LocalDate;
+
 
 public class Main
 {
     static Map <String, String> dicionary =  new HashMap<>();
 	static Scanner input = new Scanner(System.in);
 	static Set<String> keys = dicionary.keySet();
+	static LocalDate data_atual = LocalDate.now();
 	
     static void ad_evento(){
+		System.out.println("Qual Evento você quer adicionar?");
+        Map<String, Integer> dicionary = new HashMap<>();
+
+     
         System.out.println("Nome do Evento:");
         String name_event = input.nextLine();
-        
+
         System.out.println("Data do Evento: (ex: 25/10/2025)");
         String data_event = input.nextLine();
+        
+       
+        String[] dataParts = data_event.split("/");
+        int dia = Integer.parseInt(dataParts[0]);
+        int mes = Integer.parseInt(dataParts[1]);
+        int ano = Integer.parseInt(dataParts[2]);
 
-        dicionary.put(name_event, data_event);
+      
+        int dataNumerica = dia * 1000000 + mes * 10000 + ano;
+
+       
+        dicionary.put(name_event, dataNumerica);
         
-        
-        System.out.println(name_event + "; Dia:" +dicionary.get(name_event));
+        System.out.println(name_event + "; Dia: " + dicionary.get(name_event));
     }
 
     static void ed_evento(){
         System.out.println("Qual Evento você queria Mudar?");
         System.out.println(dicionary.keySet());
     }
-
+    
+    static void prox_evento(){
+        int dia = data_atual.getMonthValue();
+        int mes = data_atual.getDayOfMonth();
+        int ano = data_atual.getYear();
+    }
+    
 	public static void main(String[] args) {
 		
 		System.out.println("Opa, aqui é uma Agenda \nO que desejas?");
@@ -41,9 +64,11 @@ public class Main
 	    input.nextLine();
 	    switch(escolha){
 	       case 0:
-	           ad_evento();
+	            ad_evento();
+	            break;
 	       case 1:
-	           ed_evento();
+	            ed_evento();
+	            break;
 	       case 2:
 	           break;
 	       case 3:
@@ -61,6 +86,7 @@ public class Main
 		
 		//Por enquanto, esse arquivo apenas servirá como teste para um projeto breve
 		*/
+		
 		}
 		input.close();
 	}
