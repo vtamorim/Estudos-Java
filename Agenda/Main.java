@@ -13,30 +13,27 @@ public class Main
 	static Set<String> keys = dicionary.keySet();
 	static LocalDate data_atual = LocalDate.now();
 	
-    static void ad_evento(){
-		System.out.println("Qual Evento você quer adicionar?");
-        Map<String, Integer> dicionary = new HashMap<>();
-
-     
+    static void ad_evento() {
+        System.out.println("Qual Evento você quer adicionar?");
+        
         System.out.println("Nome do Evento:");
         String name_event = input.nextLine();
 
         System.out.println("Data do Evento: (ex: 25/10/2025)");
         String data_event = input.nextLine();
-        
-       
+
         String[] dataParts = data_event.split("/");
         int dia = Integer.parseInt(dataParts[0]);
         int mes = Integer.parseInt(dataParts[1]);
         int ano = Integer.parseInt(dataParts[2]);
 
-      
-        int dataNumerica = dia * 1000000 + mes * 10000 + ano;
+        // Converte a data para uma string formatada
+        String dataFormatada = String.format("%02d/%02d/%04d", dia, mes, ano);
 
-       
-        dicionary.put(name_event, dataNumerica);
-        
-        System.out.println(name_event + "; Dia: " + dicionary.get(name_event));
+        // Adiciona o evento ao mapa estático
+        dicionary.put(name_event, dataFormatada);
+
+        System.out.println(name_event + "; Data: " + dicionary.get(name_event));
     }
 
     static void ed_evento(){
