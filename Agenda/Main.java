@@ -12,7 +12,11 @@ public class Main
 	static Scanner input = new Scanner(System.in);
 	static Set<String> keys = dicionary.keySet();
 	static LocalDate data_atual = LocalDate.now();
-	
+	static int dia;
+	static int mes;
+	static int ano;
+
+
     static void ad_evento() {
         System.out.println("Qual Evento você quer adicionar?");
         
@@ -23,9 +27,9 @@ public class Main
         String data_event = input.nextLine();
 
         String[] dataParts = data_event.split("/");
-        int dia = Integer.parseInt(dataParts[0]);
-        int mes = Integer.parseInt(dataParts[1]);
-        int ano = Integer.parseInt(dataParts[2]);
+        dia = Integer.parseInt(dataParts[0]);
+        mes = Integer.parseInt(dataParts[1]);
+        ano = Integer.parseInt(dataParts[2]);
 
         // Converte a data para uma string formatada
         String dataFormatada = String.format("%02d/%02d/%04d", dia, mes, ano);
@@ -42,9 +46,18 @@ public class Main
     }
     
     static void prox_evento(){
-        int dia = data_atual.getMonthValue();
-        int mes = data_atual.getDayOfMonth();
-        int ano = data_atual.getYear();
+    int dia_prox = data_atual.getMonthValue();
+    int mes_prox = data_atual.getDayOfMonth();
+    int ano_prox = data_atual.getYear();
+    System.out.println("Data atual: " + data_atual);
+
+    // Verifica se o evento foi adicionado
+    if (dia != 0 && mes != 0 && ano != 0) {
+        System.out.println("Próximo evento: " + String.format("%02d/%02d/%04d", dia, mes, ano));
+    } else {
+        System.out.println("Nenhum evento foi adicionado ainda.");
+    }
+		System.out.println(dia_prox + "" + dia);
     }
     
 	public static void main(String[] args) {
@@ -67,7 +80,8 @@ public class Main
 	            ed_evento();
 	            break;
 	       case 2:
-	           break;
+				prox_evento();
+	            break;
 	       case 3:
 	           break;
 	       default:
