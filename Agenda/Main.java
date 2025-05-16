@@ -23,16 +23,16 @@ public class Main
         System.out.println("Nome do Evento:");
         String name_event = input.nextLine();
 
-        System.out.println("Data do Evento: (ex: 25/10/2025)");
+        System.out.println("Data do Evento: (ex: 2025/10/25)");
         String data_event = input.nextLine();
 
         String[] dataParts = data_event.split("/");
-        dia = Integer.parseInt(dataParts[0]);
+        dia = Integer.parseInt(dataParts[2]);
         mes = Integer.parseInt(dataParts[1]);
-        ano = Integer.parseInt(dataParts[2]);
+        ano = Integer.parseInt(dataParts[0]);
 
         // Converte a data para uma string formatada
-        String dataFormatada = String.format("%02d/%02d/%04d", dia, mes, ano);
+        String dataFormatada = String.format("%04d/%02d/%02d", ano, mes, dia);
 
         // Adiciona o evento ao mapa estático
         dicionary.put(name_event, dataFormatada);
@@ -42,7 +42,21 @@ public class Main
 
     static void ed_evento(){
         System.out.println("Qual Evento você queria Mudar?");
-        System.out.println(dicionary.keySet());
+        for (Map.Entry<String, String> eventos : dicionary.entrySet()) {
+            System.out.println(eventos.getKey() + " " + eventos.getValue());
+        }
+        
+        String key_edit = input.nextLine();
+        if (dicionary.containsKey(key_edit)){
+            String datetime_old = dicionary.get(key_edit);
+            dicionary.remove(key_edit);
+            String key_new = input.nextLine();
+            dicionary.put(key_new,datetime_old);
+            
+        }
+        else{
+            System.out.println("Erro na Validação");
+        }
     }
     
     static void prox_evento(){
@@ -53,11 +67,10 @@ public class Main
 
     // Verifica se o evento foi adicionado
     if (dia != 0 && mes != 0 && ano != 0) {
-        System.out.println("Próximo evento: " + String.format("%02d/%02d/%04d", dia, mes, ano));
+        System.out.println("Próximo evento: " + String.format("%04d-%02d-%02d", ano, mes, dia));
     } else {
         System.out.println("Nenhum evento foi adicionado ainda.");
     }
-		System.out.println(dia_prox + "" + dia);
     }
     
 	public static void main(String[] args) {
@@ -94,6 +107,9 @@ public class Main
 		System.out.println("Aniversário da Pessoa \n (ex: 00/00/0000 : \n Dia/Mês/Ano");
 		dicionary.put("Djonga","173");
 		
+        
+
+
 		
 		//Por enquanto, esse arquivo apenas servirá como teste para um projeto breve
 		*/
