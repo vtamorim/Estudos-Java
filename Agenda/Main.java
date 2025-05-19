@@ -12,11 +12,15 @@ public class Main
 	static Scanner input = new Scanner(System.in);
 	static Set<String> keys = dicionary.keySet();
 	static LocalDate data_atual = LocalDate.now();
+	static Set<String> chave_prox= new HashSet<>();
 	static int dia;
 	static int mes;
 	static int ano;
-
-
+	static int dia_prox;
+    static int mes_prox;
+    static int ano_prox;
+    static String dataFormatada;
+    
     static void ad_evento() {
         System.out.println("Qual Evento você quer adicionar?");
         
@@ -73,6 +77,24 @@ public class Main
     }
     }
     
+    static void comp_day(){
+        
+        
+        if ( dia_prox == dia && mes_prox == mes && ano_prox == ano){
+            for (Map.Entry<String, String> entry : dicionary.entrySet()) {
+                if (entry.getValue().equals(dataFormatada)){
+                    chave_prox.add(entry.getKey());
+                }
+            
+        }
+            System.out.println("Compromissos de Hoje: " + chave_prox);
+            
+        }
+        else {
+            System.out.println("Inválido");
+        }
+    }
+    
 	public static void main(String[] args) {
 		
 		System.out.println("Opa, aqui é uma Agenda \nO que desejas?");
@@ -96,6 +118,7 @@ public class Main
 				prox_evento();
 	            break;
 	       case 3:
+	           comp_day();
 	           break;
 	       default:
 	           System.out.println("Número inválido");
