@@ -1,7 +1,3 @@
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -63,20 +59,49 @@ public class Main
         }
     }
     
-    static void prox_evento(){
-    int dia_prox = data_atual.getMonthValue();
-    int mes_prox = data_atual.getDayOfMonth();
-    int ano_prox = data_atual.getYear();
-    System.out.println("Data atual: " + data_atual);
-
-    // Verifica se o evento foi adicionado
-    if (dia != 0 && mes != 0 && ano != 0) {
-        System.out.println("Próximo evento: " + String.format("%04d-%02d-%02d", ano, mes, dia));
-    } else {
-        System.out.println("Nenhum evento foi adicionado ainda.");
-    }
-    }
     
+    static void prox_evento() {
+        System.out.println("Data atual: " + data_atual);
+
+        if (dicionary.isEmpty()) {
+            System.out.println("Nenhum evento foi adicionado ainda.");
+            return;
+        }
+
+        // Aqui você pode armazenar a data mais próxima inicializada como data longe no futuro
+        LocalDate dataProxima = LocalDate.of(3000, 1, 1);
+        String eventoProximo = "";
+
+        for (Map.Entry<String, String> evento : dicionary.entrySet()) {
+            String data_event = evento.getValue(); // Ex: "2025/05/22"
+            
+            // Divide a string e pega ano, mes e dia
+            String[] dataParts = data_event.split("/");
+
+            int ano_event = Integer.parseInt(dataParts[0]);
+            int mes_event = Integer.parseInt(dataParts[1]);
+            int dia_event = Integer.parseInt(dataParts[2]);
+
+            LocalDate dataEvento = LocalDate.of(ano_event, mes_event, dia_event);
+
+            // Verifica se a data do evento é depois da data atual e se é a mais próxima
+            if (!dataEvento.isBefore(data_atual) && dataEvento.isBefore(dataProxima)) {
+                dataProxima = dataEvento;
+                eventoProximo = evento.getKey();
+            }
+        }
+
+        if (!eventoProximo.isEmpty()) {
+            dia = dataProxima.getDayOfMonth();
+            mes = dataProxima.getMonthValue();
+            ano = dataProxima.getYear();
+
+            System.out.println("Próximo evento: " + eventoProximo + " em " 
+                + String.format("%04d-%02d-%02d", ano, mes, dia));
+        } else {
+            System.out.println("Nenhum evento futuro encontrado.");
+        }
+    }
     static void comp_day(){
         
         
@@ -114,7 +139,7 @@ public class Main
 	       case 1:
 	            ed_evento();
 	            break;
-	       case 2:
+	       case 2: 
 				prox_evento();
 	            break;
 	       case 3:
