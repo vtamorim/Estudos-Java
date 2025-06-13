@@ -16,12 +16,13 @@ public class Main
 		
 		Pattern pattern = Pattern.compile(validation);
 		
-		Matcher matcher = pattern.matcher(email);A
-		
+		Matcher matcher = pattern.matcher(email);
+		emailentry.close();
 		if(matcher.find()){
 		    System.out.println("Email Válido!");
 		}
 		else{
+			
 		    throw new IllegalArgumentException("Email inválido.");
 		}
 		
