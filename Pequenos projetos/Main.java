@@ -6,7 +6,6 @@ import java.io.FileWriter;
 
 
 
-
 public class Main{
 
     public void Inicio(){
@@ -20,11 +19,28 @@ public class Main{
 
     
     public static void main(String[] args){
+
+    String validation = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
+
     Main principal = new Main();
     principal.Inicio();
     String veri = Entrada.Entry.nextLine();
     
-    if(veri.equals("S")){
+    if(veri.equals("C")){
+        System.out.print("Seu Email: ");
+        String email = Entrada.Entry.nextLine();
+        
+        Pattern paterno = Pattern.compile(validation);
+
+        Matcher macheri = paterno.matcher(email);
+
+        if(macheri.find()){
+            System.out.println("Válido");
+        }
+        else{
+            throw new IllegalArgumentException("Email Inválido");
+        }
+
 
     }
     else if(veri.equals("L")){
@@ -34,8 +50,9 @@ public class Main{
     {
         throw new IllegalArgumentException(veri);
     }
-
+        
     }
+    
 }
 
 
