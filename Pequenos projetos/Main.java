@@ -14,7 +14,10 @@ public class Main{
         System.out.println("C para se Cadastrar\nL para Iniciar Sessão");
     }
 
+    public void Adicionar(){
+        
 
+    }
 
 
     
@@ -60,3 +63,42 @@ class Entrada{
     public static final Scanner Entry = new Scanner(System.in);
 }
 
+
+class Contatos{
+    private String nome;
+    private String email;
+    private Integer Idade;
+    private String fone;
+
+
+
+    public String get_nome(){
+        return nome;
+    }
+
+    public String get_email(){
+        return email;
+    }
+    
+    public Integer get_idade(){
+        return Idade;
+    }
+    public String get_fone(){
+        return fone;
+    }
+
+    
+    public void Set_nome(String novonome){
+        this.nome = novonome;
+    }
+
+    public void Set_email(String novoemail){
+        this.email = novoemail;
+    }
+    public void Set_idade(Integer novaidade){
+        this.Idade = novaidade;
+    }
+    public void Set_fone(String novofone){
+        this.fone = novofone;
+    }
+}
