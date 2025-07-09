@@ -8,10 +8,33 @@ import java.io.FileWriter;
 
 public class Main{
 
-    public void Inicio(){
+    public void Cadastro(){
         System.out.println("Bem-vindo ao Centro de Contatos");
         System.out.println("Por favor,Escolhe uma opção");
         System.out.println("C para se Cadastrar\nL para Iniciar Sessão");
+    }
+
+    public Integer Menu(){
+        String[] opcoes = {"Adicionar Contato","Editar Contato","Pesquisar Contato","Listar os Contatos"};
+        for (int index = 0; index < opcoes.length; index++) {
+            System.out.println("[" + index + "]" + opcoes[index]);
+        }
+
+        return Entrada.Entry.nextInt();
+    }
+
+    public void Principal(){
+        while (true) {
+            Integer mano = Menu();
+            switch (mano) {
+                case 0:
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+        }
     }
 
     public void Adicionar(){
@@ -26,7 +49,7 @@ public class Main{
     String validation = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
 
     Main principal = new Main();
-    principal.Inicio();
+    principal.Cadastro();
     String veri = Entrada.Entry.nextLine();
     
     if(veri.equals("C")){
@@ -101,4 +124,7 @@ class Contatos{
     public void Set_fone(String novofone){
         this.fone = novofone;
     }
+
+
+
 }
