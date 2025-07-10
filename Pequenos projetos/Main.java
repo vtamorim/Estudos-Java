@@ -1,13 +1,13 @@
 
 import java.util.Scanner;
 import java.util.regex.*;
-import java.io.IOException;
-import java.io.FileWriter;
-
+//import java.io.IOException;
+//import java.io.FileWriter;
+import java.util.ArrayList;
 
 
 public class Main{
-
+    private ArrayList<String> Lista = new ArrayList<String>();
     public void Cadastro(){
         System.out.println("Bem-vindo ao Centro de Contatos");
         System.out.println("Por favor,Escolhe uma opção");
@@ -22,6 +22,7 @@ public class Main{
 
         return Entrada.Entry.nextInt();
     }
+
 
     public void Principal(){
         while (true) {
@@ -38,10 +39,17 @@ public class Main{
     }
 
     public void Adicionar(){
-        
-
+        System.out.print("Nome do Contato: ");
+        String nome = Entrada.Entry.nextLine();
+        System.out.print("Idade do(a) " + nome +": " );
+        Integer idade = Entrada.Entry.nextInt();
+        System.out.print("Número do(a) " + nome +": ex: (11) 91111-1111");
+        String fone = Entrada.Entry.nextLine();
     }
 
+    public void Listar(){
+         
+    }
 
     
     public static void main(String[] args){
