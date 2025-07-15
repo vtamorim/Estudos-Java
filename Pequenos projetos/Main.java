@@ -56,7 +56,7 @@ public class Main{
 
     String validation = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
 
-    Main principal = new Main();
+    aSwing principal = new aSwing();
     principal.Cadastro();
     String veri = Entrada.Entry.nextLine();
     
