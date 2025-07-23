@@ -1,20 +1,40 @@
 
 import java.util.Scanner;
 import java.util.regex.*;
+import java.awt.List;
 //import java.io.IOException;
 //import java.io.FileWriter;
 import java.util.ArrayList;
 
 
 public class Main{
-    private ArrayList<String> Lista = new ArrayList<String>();
-    public void Cadastro(){
+    static ArrayList<String> Lista = new ArrayList<String>();
+    static void Iniciar(){
         System.out.println("Bem-vindo ao Centro de Contatos");
         System.out.println("Por favor,Escolhe uma opção");
         System.out.println("C para se Cadastrar\nL para Iniciar Sessão");
+        String Choose_cl = Entrada.Entry.nextLine();
+        switch (Choose_cl) {
+            case "C":
+                
+                break;
+            case "L":
+
+                break;
+            default:
+                break;
+        }
+
+
     }
 
-    public Integer Menu(){
+    static void Cadastrar(){
+        
+    }
+
+
+
+    static Integer Menu(){
         String[] opcoes = {"Adicionar Contato","Editar Contato","Pesquisar Contato","Listar os Contatos"};
         for (int index = 0; index < opcoes.length; index++) {
             System.out.println("[" + index + "]" + opcoes[index]);
@@ -24,7 +44,7 @@ public class Main{
     }
 
 
-    public void Principal(){
+    static void Principal(){
         while (true) {
             Integer mano = Menu();
             switch (mano) {
@@ -38,17 +58,23 @@ public class Main{
         }
     }
 
-    public void Adicionar(){
+    static void Adicionar(){
         System.out.print("Nome do Contato: ");
         String nome = Entrada.Entry.nextLine();
         System.out.print("Idade do(a) " + nome +": " );
         Integer idade = Entrada.Entry.nextInt();
         System.out.print("Número do(a) " + nome +": ex: (11) 91111-1111");
         String fone = Entrada.Entry.nextLine();
+        Lista.add("Nome: " + nome + " Idade: " +  idade + " Fone: " + fone );
     }
 
-    public void Listar(){
-         
+    static void Listar(){
+        if (Lista.size() == 0) {
+            throw new ArrayIndexOutOfBoundsException("Insira primeiro seu animal '-' ");
+        }
+        for (String string : Lista) {
+            System.out.println(string);
+        }
     }
 
     
@@ -56,8 +82,7 @@ public class Main{
 
     String validation = "^[\\w.-]+@[\\w.-]+\\.\\w{2,}$";
 
-    aSwing principal = new aSwing();
-    principal.Cadastro();
+    Principal();;
     String veri = Entrada.Entry.nextLine();
     
     if(veri.equals("C")){

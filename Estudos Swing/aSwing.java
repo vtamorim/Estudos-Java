@@ -57,9 +57,23 @@ public class aSwing {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
+        JPanel principal = new JPanel();
+        principal.setLayout(new BorderLayout());
+        JPanel cima = new JPanel();
+        JPanel baixo = new JPanel();
+
         JLabel label = new JLabel("Digite algo:");
         JTextField textField = new JTextField(15);
         JButton button = new JButton("Mostrar");
+
+
+        JButton mais = new JButton("+");
+        JButton menos = new JButton("-");
+        JButton vezes = new JButton("x");
+        JButton dividir = new JButton("/");
+        
+
+
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -67,11 +81,20 @@ public class aSwing {
                 JOptionPane.showMessageDialog(frame, "Você digitou: " + texto);
             }
         });
+        baixo.add(mais);
+        baixo.add(menos);
+        baixo.add(vezes);
+        baixo.add(dividir);
 
-        frame.add(label);
-        frame.add(textField);
-        frame.add(button);
 
+        cima.add(label);
+        cima.add(textField);
+        cima.add(button);
+
+        principal.add(cima, BorderLayout.NORTH);
+        principal.add(baixo, BorderLayout.SOUTH);
+
+        frame.add(principal);
         frame.setVisible(true);
     }
 }
