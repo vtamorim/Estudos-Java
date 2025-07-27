@@ -66,7 +66,6 @@ class Main{
         enviar.addActionListener(e ->{
             try{
                 
-                int valor_idade = Integer.parseInt(textField.getText());
                 float valor_peso = Float.parseFloat(textPeso.getText());
                 float valor_altura = Float.parseFloat(textaltura.getText());
                 float imc = valor_peso/( valor_altura*valor_altura);
@@ -97,6 +96,7 @@ class Main{
                     painel.setBackground(new Color(156, 39, 176));
                 
                 }
+            System.out.print(e);
             texto_resultado.setText(resultado);
             }
             catch (NumberFormatException ex) {
