@@ -24,7 +24,7 @@ class Main{
         texto.setAlignmentX(Component.CENTER_ALIGNMENT);
         texto_resultado.setAlignmentX(Component.CENTER_ALIGNMENT);
         painel.add(texto);
-        painel.add(Box.createRigidArea(new Dimension(0, 8))); // espaço entre título e resultado
+        painel.add(Box.createRigidArea(new Dimension(0, 8)));
         painel.add(texto_resultado);
 
 
