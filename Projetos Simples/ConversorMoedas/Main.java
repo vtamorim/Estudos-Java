@@ -60,7 +60,7 @@ public class Main {
         JButton submit = new JButton("Enviar");
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Adicionando painéis e espaçamentos
+        // Criando Area rigida para melhor estilização
         Agrupamento.add(titulo);
         Agrupamento.add(Box.createRigidArea(new Dimension(0, 10)));
         Agrupamento.add(Inicial);
@@ -69,7 +69,7 @@ public class Main {
         Agrupamento.add(Box.createRigidArea(new Dimension(0, 10)));
         Agrupamento.add(submit);
 
-        // Adicionando ao JFrame
+        // Adicionando o Painel Principal
         janela.setLayout(new BorderLayout());
         janela.add(Agrupamento, BorderLayout.CENTER);
 
